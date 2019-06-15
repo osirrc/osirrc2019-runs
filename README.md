@@ -1,4 +1,4 @@
-# OSIRRC 2019 Image Library
+# OSIRRC 2019 Official Runs
 
 This repo catalogs the images that have been submitted to the SIGIR 2019 Open-Source IR Replicability Challenge (OSIRRC 2019).
 
