@@ -5,7 +5,7 @@ This repo catalogs the images that have been submitted to the SIGIR 2019 Open-So
 + [Anserini](#Anserini)
 + [ATIRE](#ATIRE)
 + [Birch](#Birch)
-+ ielab
++ [ielab](#ielab)
 + [Indri](#Indri)
 + [IRC-CENTRE2019](#IRC-CENTRE2019)
 + [JASS](#JASS)
@@ -39,6 +39,7 @@ Run | Date | Collection | Host | Jig | Image |
 :----|:----|:-----|:----|:------|:-----------|
 0 | yyyy/mm/dd | Robust04 | Azure instance... | `xxxxxx` | `xxxxxx`
 
+<a name="ielab"></a>
 ## ielab
 Execution log:
 
@@ -57,6 +58,7 @@ Run | Date | Collection | Host | Jig | Image |
 <a name="IRC-CENTRE2019"></a>
 ## IRC-CENTRE2019 
 Execution log:
+
 Run | Date | Collection | Host | Jig | Image |
 :----|:----|:-----|:----|:------|:-----------|
 0 | yyyy/mm/dd | Robust04 | Azure instance... | `xxxxxx` | `xxxxxx`
