@@ -1,0 +1,947 @@
+Preparing image...
+Logs for init and index in container with ID e0d12c528eb72bf4f3ac0cfe1cc0b90a93fbfe692f8e2072a080def46e93dd10...
+
+# Get ATIRE
+hg clone http://www.atire.org/hg/atire
+destination directory: atire
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 2183 changesets with 16106 changes to 7642 files (+2 heads)
+updating to branch default
+6427 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+# make ATIRE and trec2query
+cd atire 
+hg revert --rev caa2f2598c19 --all
+make
+make -C /work/atire/external/unencumbered/zlib -f GNUmakefile USE_GCC_VERBOSE=0
+make[1]: Entering directory '/work/atire/external/unencumbered/zlib'
+zlib-1.2.5/adler32.c
+zlib-1.2.5/compress.c
+zlib-1.2.5/crc32.c
+zlib-1.2.5/deflate.c
+zlib-1.2.5/infback.c
+zlib-1.2.5/inffast.c
+zlib-1.2.5/inflate.c
+zlib-1.2.5/inftrees.c
+zlib-1.2.5/trees.c
+zlib-1.2.5/uncompr.c
+zlib-1.2.5/zutil.c
+ar: creating libz.a
+a - zlib-1.2.5/adler32.o
+a - zlib-1.2.5/compress.o
+a - zlib-1.2.5/crc32.o
+a - zlib-1.2.5/deflate.o
+a - zlib-1.2.5/infback.o
+a - zlib-1.2.5/inffast.o
+a - zlib-1.2.5/inflate.o
+a - zlib-1.2.5/inftrees.o
+a - zlib-1.2.5/trees.o
+a - zlib-1.2.5/uncompr.o
+a - zlib-1.2.5/zutil.o
+make[1]: Leaving directory '/work/atire/external/unencumbered/zlib'
+make -C /work/atire/external/unencumbered/bzip -f GNUmakefile USE_GCC_VERBOSE=0
+make[1]: Entering directory '/work/atire/external/unencumbered/bzip'
+bzip2-1.0.6/blocksort.c
+bzip2-1.0.6/huffman.c
+bzip2-1.0.6/crctable.c
+bzip2-1.0.6/randtable.c
+bzip2-1.0.6/compress.c
+bzip2-1.0.6/decompress.c
+bzip2-1.0.6/bzlib.c
+ar: creating libbz2.a
+a - bzip2-1.0.6/blocksort.o
+a - bzip2-1.0.6/huffman.o
+a - bzip2-1.0.6/crctable.o
+a - bzip2-1.0.6/randtable.o
+a - bzip2-1.0.6/compress.o
+a - bzip2-1.0.6/decompress.o
+a - bzip2-1.0.6/bzlib.o
+make[1]: Leaving directory '/work/atire/external/unencumbered/bzip'
+make -C /work/atire/external/gpl/lzo -f GNUmakefile USE_GCC_VERBOSE=0
+make[1]: Entering directory '/work/atire/external/gpl/lzo'
+lzo-2.10/src/lzo1.c
+lzo-2.10/src/lzo1_99.c
+lzo-2.10/src/lzo1a.c
+lzo-2.10/src/lzo1a_99.c
+lzo-2.10/src/lzo1b_1.c
+lzo-2.10/src/lzo1b_2.c
+lzo-2.10/src/lzo1b_3.c
+lzo-2.10/src/lzo1b_4.c
+lzo-2.10/src/lzo1b_5.c
+lzo-2.10/src/lzo1b_6.c
+lzo-2.10/src/lzo1b_7.c
+lzo-2.10/src/lzo1b_8.c
+lzo-2.10/src/lzo1b_9.c
+lzo-2.10/src/lzo1b_99.c
+lzo-2.10/src/lzo1b_9x.c
+lzo-2.10/src/lzo1b_cc.c
+lzo-2.10/src/lzo1b_d1.c
+lzo-2.10/src/lzo1b_d2.c
+lzo-2.10/src/lzo1b_rr.c
+lzo-2.10/src/lzo1b_xx.c
+lzo-2.10/src/lzo1c_1.c
+lzo-2.10/src/lzo1c_2.c
+lzo-2.10/src/lzo1c_3.c
+lzo-2.10/src/lzo1c_4.c
+lzo-2.10/src/lzo1c_5.c
+lzo-2.10/src/lzo1c_6.c
+lzo-2.10/src/lzo1c_7.c
+lzo-2.10/src/lzo1c_8.c
+lzo-2.10/src/lzo1c_9.c
+lzo-2.10/src/lzo1c_99.c
+lzo-2.10/src/lzo1c_9x.c
+lzo-2.10/src/lzo1c_cc.c
+lzo-2.10/src/lzo1c_d1.c
+lzo-2.10/src/lzo1c_d2.c
+lzo-2.10/src/lzo1c_rr.c
+lzo-2.10/src/lzo1c_xx.c
+lzo-2.10/src/lzo1f_1.c
+lzo-2.10/src/lzo1f_9x.c
+lzo-2.10/src/lzo1f_d1.c
+lzo-2.10/src/lzo1f_d2.c
+lzo-2.10/src/lzo1x_1.c
+lzo-2.10/src/lzo1x_1k.c
+lzo-2.10/src/lzo1x_1l.c
+lzo-2.10/src/lzo1x_1o.c
+lzo-2.10/src/lzo1x_9x.c
+lzo-2.10/src/lzo1x_d1.c
+lzo-2.10/src/lzo1x_d2.c
+lzo-2.10/src/lzo1x_d3.c
+lzo-2.10/src/lzo1x_o.c
+lzo-2.10/src/lzo1y_1.c
+lzo-2.10/src/lzo1y_9x.c
+lzo-2.10/src/lzo1y_d1.c
+lzo-2.10/src/lzo1y_d2.c
+lzo-2.10/src/lzo1y_d3.c
+lzo-2.10/src/lzo1y_o.c
+lzo-2.10/src/lzo1z_9x.c
+lzo-2.10/src/lzo1z_d1.c
+lzo-2.10/src/lzo1z_d2.c
+lzo-2.10/src/lzo1z_d3.c
+lzo-2.10/src/lzo2a_9x.c
+lzo-2.10/src/lzo2a_d1.c
+lzo-2.10/src/lzo2a_d2.c
+lzo-2.10/src/lzo_crc.c
+lzo-2.10/src/lzo_init.c
+lzo-2.10/src/lzo_ptr.c
+lzo-2.10/src/lzo_str.c
+lzo-2.10/src/lzo_util.c
+ar: creating liblzo2.a
+a - lzo-2.10/src/lzo1.o
+a - lzo-2.10/src/lzo1_99.o
+a - lzo-2.10/src/lzo1a.o
+a - lzo-2.10/src/lzo1a_99.o
+a - lzo-2.10/src/lzo1b_1.o
+a - lzo-2.10/src/lzo1b_2.o
+a - lzo-2.10/src/lzo1b_3.o
+a - lzo-2.10/src/lzo1b_4.o
+a - lzo-2.10/src/lzo1b_5.o
+a - lzo-2.10/src/lzo1b_6.o
+a - lzo-2.10/src/lzo1b_7.o
+a - lzo-2.10/src/lzo1b_8.o
+a - lzo-2.10/src/lzo1b_9.o
+a - lzo-2.10/src/lzo1b_99.o
+a - lzo-2.10/src/lzo1b_9x.o
+a - lzo-2.10/src/lzo1b_cc.o
+a - lzo-2.10/src/lzo1b_d1.o
+a - lzo-2.10/src/lzo1b_d2.o
+a - lzo-2.10/src/lzo1b_rr.o
+a - lzo-2.10/src/lzo1b_xx.o
+a - lzo-2.10/src/lzo1c_1.o
+a - lzo-2.10/src/lzo1c_2.o
+a - lzo-2.10/src/lzo1c_3.o
+a - lzo-2.10/src/lzo1c_4.o
+a - lzo-2.10/src/lzo1c_5.o
+a - lzo-2.10/src/lzo1c_6.o
+a - lzo-2.10/src/lzo1c_7.o
+a - lzo-2.10/src/lzo1c_8.o
+a - lzo-2.10/src/lzo1c_9.o
+a - lzo-2.10/src/lzo1c_99.o
+a - lzo-2.10/src/lzo1c_9x.o
+a - lzo-2.10/src/lzo1c_cc.o
+a - lzo-2.10/src/lzo1c_d1.o
+a - lzo-2.10/src/lzo1c_d2.o
+a - lzo-2.10/src/lzo1c_rr.o
+a - lzo-2.10/src/lzo1c_xx.o
+a - lzo-2.10/src/lzo1f_1.o
+a - lzo-2.10/src/lzo1f_9x.o
+a - lzo-2.10/src/lzo1f_d1.o
+a - lzo-2.10/src/lzo1f_d2.o
+a - lzo-2.10/src/lzo1x_1.o
+a - lzo-2.10/src/lzo1x_1k.o
+a - lzo-2.10/src/lzo1x_1l.o
+a - lzo-2.10/src/lzo1x_1o.o
+a - lzo-2.10/src/lzo1x_9x.o
+a - lzo-2.10/src/lzo1x_d1.o
+a - lzo-2.10/src/lzo1x_d2.o
+a - lzo-2.10/src/lzo1x_d3.o
+a - lzo-2.10/src/lzo1x_o.o
+a - lzo-2.10/src/lzo1y_1.o
+a - lzo-2.10/src/lzo1y_9x.o
+a - lzo-2.10/src/lzo1y_d1.o
+a - lzo-2.10/src/lzo1y_d2.o
+a - lzo-2.10/src/lzo1y_d3.o
+a - lzo-2.10/src/lzo1y_o.o
+a - lzo-2.10/src/lzo1z_9x.o
+a - lzo-2.10/src/lzo1z_d1.o
+a - lzo-2.10/src/lzo1z_d2.o
+a - lzo-2.10/src/lzo1z_d3.o
+a - lzo-2.10/src/lzo2a_9x.o
+a - lzo-2.10/src/lzo2a_d1.o
+a - lzo-2.10/src/lzo2a_d2.o
+a - lzo-2.10/src/lzo_crc.o
+a - lzo-2.10/src/lzo_init.o
+a - lzo-2.10/src/lzo_ptr.o
+a - lzo-2.10/src/lzo_str.o
+a - lzo-2.10/src/lzo_util.o
+make[1]: Leaving directory '/work/atire/external/gpl/lzo'
+make -C /work/atire/external/unencumbered/snappy -f GNUmakefile.static USE_GCC_VERBOSE=0
+make[1]: Entering directory '/work/atire/external/unencumbered/snappy'
+snappy-1.1.1/snappy-sinksource.cc
+snappy-1.1.1/snappy.cc
+snappy-1.1.1/snappy-stubs-internal.cc
+ar: creating libsnappy.a
+a - snappy-1.1.1/snappy-sinksource.o
+a - snappy-1.1.1/snappy.o
+a - snappy-1.1.1/snappy-stubs-internal.o
+make[1]: Leaving directory '/work/atire/external/unencumbered/snappy'
+make -C /work/atire/external/unencumbered/snowball -f GNUmakefile USE_GCC_VERBOSE=0
+make[1]: Entering directory '/work/atire/external/unencumbered/snowball'
+libstemmer_c/runtime/api.c
+libstemmer_c/runtime/utilities.c
+libstemmer_c/src_c/stem_ISO_8859_1_basque.c
+libstemmer_c/src_c/stem_ISO_8859_1_catalan.c
+libstemmer_c/src_c/stem_ISO_8859_1_danish.c
+libstemmer_c/src_c/stem_ISO_8859_1_dutch.c
+libstemmer_c/src_c/stem_ISO_8859_1_english.c
+libstemmer_c/src_c/stem_ISO_8859_1_finnish.c
+libstemmer_c/src_c/stem_ISO_8859_1_french.c
+libstemmer_c/src_c/stem_ISO_8859_1_german.c
+libstemmer_c/src_c/stem_ISO_8859_1_german2.c
+libstemmer_c/src_c/stem_ISO_8859_1_hungarian.c
+libstemmer_c/src_c/stem_ISO_8859_1_italian.c
+libstemmer_c/src_c/stem_ISO_8859_1_kraaij_pohlmann.c
+libstemmer_c/src_c/stem_ISO_8859_1_lovins.c
+libstemmer_c/src_c/stem_ISO_8859_1_norwegian.c
+libstemmer_c/src_c/stem_ISO_8859_1_porter.c
+libstemmer_c/src_c/stem_ISO_8859_1_portuguese.c
+libstemmer_c/src_c/stem_ISO_8859_1_spanish.c
+libstemmer_c/src_c/stem_ISO_8859_1_swedish.c
+libstemmer_c/src_c/stem_ISO_8859_2_romanian.c
+libstemmer_c/src_c/stem_KOI8_R_russian.c
+libstemmer_c/src_c/stem_UTF_8_armenian.c
+libstemmer_c/src_c/stem_UTF_8_basque.c
+libstemmer_c/src_c/stem_UTF_8_catalan.c
+libstemmer_c/src_c/stem_UTF_8_danish.c
+libstemmer_c/src_c/stem_UTF_8_dutch.c
+libstemmer_c/src_c/stem_UTF_8_english.c
+libstemmer_c/src_c/stem_UTF_8_finnish.c
+libstemmer_c/src_c/stem_UTF_8_french.c
+libstemmer_c/src_c/stem_UTF_8_german.c
+libstemmer_c/src_c/stem_UTF_8_german2.c
+libstemmer_c/src_c/stem_UTF_8_hungarian.c
+libstemmer_c/src_c/stem_UTF_8_italian.c
+libstemmer_c/src_c/stem_UTF_8_kraaij_pohlmann.c
+libstemmer_c/src_c/stem_UTF_8_lovins.c
+libstemmer_c/src_c/stem_UTF_8_norwegian.c
+libstemmer_c/src_c/stem_UTF_8_porter.c
+libstemmer_c/src_c/stem_UTF_8_portuguese.c
+libstemmer_c/src_c/stem_UTF_8_romanian.c
+libstemmer_c/src_c/stem_UTF_8_russian.c
+libstemmer_c/src_c/stem_UTF_8_spanish.c
+libstemmer_c/src_c/stem_UTF_8_swedish.c
+libstemmer_c/src_c/stem_UTF_8_turkish.c
+ar rvs libstemmer.a  libstemmer_c/libstemmer/libstemmer.o libstemmer_c/libstemmer/libstemmer_utf8.o libstemmer_c/runtime/api.o libstemmer_c/runtime/utilities.o libstemmer_c/src_c/stem_ISO_8859_1_basque.o libstemmer_c/src_c/stem_ISO_8859_1_catalan.o libstemmer_c/src_c/stem_ISO_8859_1_danish.o libstemmer_c/src_c/stem_ISO_8859_1_dutch.o libstemmer_c/src_c/stem_ISO_8859_1_english.o libstemmer_c/src_c/stem_ISO_8859_1_finnish.o libstemmer_c/src_c/stem_ISO_8859_1_french.o libstemmer_c/src_c/stem_ISO_8859_1_german.o libstemmer_c/src_c/stem_ISO_8859_1_german2.o libstemmer_c/src_c/stem_ISO_8859_1_hungarian.o libstemmer_c/src_c/stem_ISO_8859_1_italian.o libstemmer_c/src_c/stem_ISO_8859_1_kraaij_pohlmann.o libstemmer_c/src_c/stem_ISO_8859_1_lovins.o libstemmer_c/src_c/stem_ISO_8859_1_norwegian.o libstemmer_c/src_c/stem_ISO_8859_1_porter.o libstemmer_c/src_c/stem_ISO_8859_1_portuguese.o libstemmer_c/src_c/stem_ISO_8859_1_spanish.o libstemmer_c/src_c/stem_ISO_8859_1_swedish.o libstemmer_c/src_c/stem_ISO_8859_2_romanian.o libstemmer_c/src_c/stem_KOI8_R_russian.o libstemmer_c/src_c/stem_UTF_8_armenian.o libstemmer_c/src_c/stem_UTF_8_basque.o libstemmer_c/src_c/stem_UTF_8_catalan.o libstemmer_c/src_c/stem_UTF_8_danish.o libstemmer_c/src_c/stem_UTF_8_dutch.o libstemmer_c/src_c/stem_UTF_8_english.o libstemmer_c/src_c/stem_UTF_8_finnish.o libstemmer_c/src_c/stem_UTF_8_french.o libstemmer_c/src_c/stem_UTF_8_german.o libstemmer_c/src_c/stem_UTF_8_german2.o libstemmer_c/src_c/stem_UTF_8_hungarian.o libstemmer_c/src_c/stem_UTF_8_italian.o libstemmer_c/src_c/stem_UTF_8_kraaij_pohlmann.o libstemmer_c/src_c/stem_UTF_8_lovins.o libstemmer_c/src_c/stem_UTF_8_norwegian.o libstemmer_c/src_c/stem_UTF_8_porter.o libstemmer_c/src_c/stem_UTF_8_portuguese.o libstemmer_c/src_c/stem_UTF_8_romanian.o libstemmer_c/src_c/stem_UTF_8_russian.o libstemmer_c/src_c/stem_UTF_8_spanish.o libstemmer_c/src_c/stem_UTF_8_swedish.o libstemmer_c/src_c/stem_UTF_8_turkish.o
+ar: creating libstemmer.a
+a - libstemmer_c/libstemmer/libstemmer.o
+a - libstemmer_c/libstemmer/libstemmer_utf8.o
+a - libstemmer_c/runtime/api.o
+a - libstemmer_c/runtime/utilities.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_basque.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_catalan.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_danish.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_dutch.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_english.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_finnish.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_french.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_german.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_german2.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_hungarian.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_italian.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_kraaij_pohlmann.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_lovins.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_norwegian.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_porter.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_portuguese.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_spanish.o
+a - libstemmer_c/src_c/stem_ISO_8859_1_swedish.o
+a - libstemmer_c/src_c/stem_ISO_8859_2_romanian.o
+a - libstemmer_c/src_c/stem_KOI8_R_russian.o
+a - libstemmer_c/src_c/stem_UTF_8_armenian.o
+a - libstemmer_c/src_c/stem_UTF_8_basque.o
+a - libstemmer_c/src_c/stem_UTF_8_catalan.o
+a - libstemmer_c/src_c/stem_UTF_8_danish.o
+a - libstemmer_c/src_c/stem_UTF_8_dutch.o
+a - libstemmer_c/src_c/stem_UTF_8_english.o
+a - libstemmer_c/src_c/stem_UTF_8_finnish.o
+a - libstemmer_c/src_c/stem_UTF_8_french.o
+a - libstemmer_c/src_c/stem_UTF_8_german.o
+a - libstemmer_c/src_c/stem_UTF_8_german2.o
+a - libstemmer_c/src_c/stem_UTF_8_hungarian.o
+a - libstemmer_c/src_c/stem_UTF_8_italian.o
+a - libstemmer_c/src_c/stem_UTF_8_kraaij_pohlmann.o
+a - libstemmer_c/src_c/stem_UTF_8_lovins.o
+a - libstemmer_c/src_c/stem_UTF_8_norwegian.o
+a - libstemmer_c/src_c/stem_UTF_8_porter.o
+a - libstemmer_c/src_c/stem_UTF_8_portuguese.o
+a - libstemmer_c/src_c/stem_UTF_8_romanian.o
+a - libstemmer_c/src_c/stem_UTF_8_russian.o
+a - libstemmer_c/src_c/stem_UTF_8_spanish.o
+a - libstemmer_c/src_c/stem_UTF_8_swedish.o
+a - libstemmer_c/src_c/stem_UTF_8_turkish.o
+make[1]: Leaving directory '/work/atire/external/unencumbered/snowball'
+/work/atire/atire/index.c
+/work/atire/atire/ant_param_block.c
+/work/atire/atire/atire_api.c
+/work/atire/atire/atire_api_remote.c
+/work/atire/atire/atire_broke.c
+/work/atire/atire/atire_broke_engine.c
+/work/atire/atire/atire_broker_param_block.c
+/work/atire/atire/atire_client_param_block.c
+/work/atire/atire/atire_engine_result_set.c
+/work/atire/atire/atire_engine_result_set_export_INEX_snippet.c
+/work/atire/atire/atire_engine_result_set_export_TREC.c
+/work/atire/atire/indexer_param_block.c
+/work/atire/atire/indexer_param_block_pregen.c
+/work/atire/atire/indexer_param_block_rank.c
+/work/atire/atire/indexer_param_block_stem.c
+/work/atire/atire/indexer_param_block_topsig.c
+/work/atire/atire/merger_param_block.c
+/work/atire/source/NEXI_ant.c
+/work/atire/source/NEXI_term.c
+/work/atire/source/NEXI_term_ant.c
+/work/atire/source/NEXI_term_iterator.c
+/work/atire/source/arithmetic_model_bigram.c
+/work/atire/source/arithmetic_model_tables.c
+/work/atire/source/arithmetic_model_unigram.c
+/work/atire/source/assessment.c
+/work/atire/source/assessment_INEX.c
+/work/atire/source/assessment_TREC.c
+/work/atire/source/assessment_factory.c
+/work/atire/source/barrier.c
+/work/atire/source/bitstream.c
+/work/atire/source/bitstring.c
+/work/atire/source/bitstring_iterator.c
+/work/atire/source/btree_iterator.c
+/work/atire/source/channel_file.c
+/work/atire/source/channel_inex.c
+/work/atire/source/channel_socket.c
+/work/atire/source/channel_trec.c
+/work/atire/source/compress_carryover12.c
+/work/atire/source/compress_elias_delta.c
+/work/atire/source/compress_elias_gamma.c
+/work/atire/source/compress_four_integer_variable_byte.c
+/work/atire/source/compress_golomb.c
+/work/atire/source/compress_none.c
+/work/atire/source/compress_relative10.c
+/work/atire/source/compress_sigma.c
+/work/atire/source/compress_sigma.c: In static member function 'static int ANT_compress_sigma::long_cmp(const void*, const void*)':
+/work/atire/source/compress_sigma.c:102:26: warning: variable 'one' set but not used [-Wunused-but-set-variable]
+ ANT_compressable_integer one, two;
+                          ^~~
+/work/atire/source/compress_sigma.c:102:31: warning: variable 'two' set but not used [-Wunused-but-set-variable]
+ ANT_compressable_integer one, two;
+                               ^~~
+/work/atire/source/compress_sigma.c: In member function 'virtual long long int ANT_compress_sigma::compress(unsigned char*, long long int, ANT_compressable_integer*, long long int)':
+/work/atire/source/compress_sigma.c:155:41: warning: variable 'gap' set but not used [-Wunused-but-set-variable]
+ ANT_compressable_integer *destination, *gap, *list;
+                                         ^~~
+/work/atire/source/compress_simple16.c
+/work/atire/source/compress_simple16_packed.c
+/work/atire/source/compress_simple8b.c
+/work/atire/source/compress_simple8b_packed.c
+/work/atire/source/compress_simple9.c
+/work/atire/source/compress_simple9_packed.c
+/work/atire/source/compress_text_bz2.c
+/work/atire/source/compress_text_deflate.c
+/work/atire/source/compress_text_none.c
+/work/atire/source/compress_text_snappy.c
+/work/atire/source/compress_variable_byte.c
+/work/atire/source/compression_factory.c
+/work/atire/source/compression_text_factory.c
+/work/atire/source/critical_section.c
+/work/atire/source/ctypes.c
+/work/atire/source/directory_iterator.c
+/work/atire/source/directory_iterator_compressor.c
+/work/atire/source/directory_iterator_csv.c
+/work/atire/source/directory_iterator_deflate.c
+/work/atire/source/directory_iterator_file.c
+/work/atire/source/directory_iterator_file_buffered.c
+/work/atire/source/directory_iterator_filter.c
+/work/atire/source/directory_iterator_filter_spam.c
+/work/atire/source/directory_iterator_internals.c
+/work/atire/source/directory_iterator_mime_filter.c
+/work/atire/source/directory_iterator_multiple.c
+/work/atire/source/directory_iterator_mysql.c
+/work/atire/source/directory_iterator_pkzip.c
+/work/atire/source/directory_iterator_preindex.c
+/work/atire/source/directory_iterator_preindex_internals.c
+/work/atire/source/directory_iterator_recursive.c
+/work/atire/source/directory_iterator_recursive.c: In member function 'virtual ANT_directory_iterator_object* ANT_directory_iterator_recursive::first(ANT_directory_iterator_object*)':
+/work/atire/source/directory_iterator_recursive.c:277:12: warning: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Wrestrict]
+    sprintf(path_buffer, "%s/", path_buffer); /* As we will later use this to mark dirs */
+            ^~~~~~~~~~~         ~~~~~~~~~~~
+/work/atire/source/directory_iterator_recursive.c: In member function 'char* ANT_directory_iterator_recursive::first_match_wildcard(char*)':
+/work/atire/source/directory_iterator_recursive.c:151:16: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  sprintf(path, "%s*", file_list->path); // that is the wildcard used for
+                ^~~~~
+/work/atire/source/directory_iterator_recursive.c:151:9: note: 'sprintf' output between 2 and 4097 bytes into a destination of size 4096
+  sprintf(path, "%s*", file_list->path); // that is the wildcard used for
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/directory_iterator_recursive.c: In member function 'virtual ANT_directory_iterator_object* ANT_directory_iterator_recursive::first(ANT_directory_iterator_object*)':
+/work/atire/source/directory_iterator_recursive.c:281:11: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying as many bytes from a string as its length [-Wstringop-truncation]
+    strncpy(path_buffer, wildcard, last_slash_idx + 1);
+    ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/directory_iterator_recursive.c:257:30: note: length computed here
+  long last_slash_idx = strlen(wildcard) - 1;
+                        ~~~~~~^~~~~~~~~~
+/work/atire/source/directory_iterator_scrub.c
+/work/atire/source/directory_iterator_tar.c
+/work/atire/source/directory_iterator_trec_recursive.c
+/work/atire/source/directory_iterator_tsv.c
+/work/atire/source/directory_iterator_warc.c
+/work/atire/source/directory_iterator_warc_gz_recursive.c
+/work/atire/source/disk.c
+/work/atire/source/evaluation.c
+/work/atire/source/evaluation_binary_preference.c
+/work/atire/source/evaluation_discounted_cumulative_gain.c
+/work/atire/source/evaluation_expected_reciprocal_rank.c
+/work/atire/source/evaluation_intent_aware_expected_reciprocal_rank.c
+/work/atire/source/evaluation_intent_aware_mean_average_precision.c
+/work/atire/source/evaluation_intent_aware_normalised_discounted_cumulative_gain.c
+/work/atire/source/evaluation_intent_aware_precision_at_n.c
+/work/atire/source/evaluation_mean_average_generalised_precision_document.c
+/work/atire/source/evaluation_mean_average_precision.c
+/work/atire/source/evaluation_normalised_discounted_cumulative_gain.c
+/work/atire/source/evaluation_precision_at_n.c
+/work/atire/source/evaluation_rank_effectiveness.c
+/work/atire/source/evaluation_success_at_n.c
+/work/atire/source/evaluator.c
+/work/atire/source/event.c
+/work/atire/source/file.c
+/work/atire/source/file_internals.c
+/work/atire/source/file_memory.c
+/work/atire/source/focus.c
+/work/atire/source/focus_article.c
+/work/atire/source/focus_lowest_tag.c
+/work/atire/source/focus_results_list.c
+/work/atire/source/hash_header.c
+/work/atire/source/hash_header_collapse.c
+/work/atire/source/hash_header_experimental.c
+/work/atire/source/hash_matt.c
+In file included from /work/atire/source/hash_matt.c:6:
+/work/atire/source/hash_matt.h:117:2: warning: #warning hash matt 32 == header hash 32 [-Wcpp]
+ #warning hash matt 32 == header hash 32
+  ^~~~~~~
+/work/atire/source/hash_random.c
+/work/atire/source/index_document.c
+/work/atire/source/index_document_topsig.c
+/work/atire/source/index_document_topsig_signature.c
+/work/atire/source/instream_Z.c
+In file included from /work/atire/source/instream_Z.c:10:
+/work/atire/source/../external/unencumbered/unlzw/unlzw.cpp: In function 'int unlzw(unsigned char**, size_t*, unsigned char*, int)':
+/work/atire/source/../external/unencumbered/unlzw/unlzw.cpp:290:16: warning: unused variable 'errmsg' [-Wunused-variable]
+    const char *errmsg[] = {
+                ^~~~~~
+/work/atire/source/instream_buffer.c
+/work/atire/source/instream_bz2.c
+/work/atire/source/instream_deflate.c
+/work/atire/source/instream_file.c
+/work/atire/source/instream_file_star.c
+/work/atire/source/instream_lzo.c
+/work/atire/source/instream_memory.c
+/work/atire/source/instream_pkzip.c
+/work/atire/source/instream_scrub.c
+/work/atire/source/instream_tgz.c
+/work/atire/source/maths.c
+/work/atire/source/memory.c
+/work/atire/source/memory_index.c
+/work/atire/source/memory_index_filename_index.c
+/work/atire/source/memory_index_hash_node.c
+/work/atire/source/memory_index_one.c
+/work/atire/source/memory_indexer.c
+/work/atire/source/mersenne_twister.c
+/work/atire/source/nexi.c
+/work/atire/source/numbers.c
+/work/atire/source/parser.c
+/work/atire/source/parser_readability.c
+/work/atire/source/plugin_manager.c
+/work/atire/source/postings_piece.c
+/work/atire/source/pregen.c
+/work/atire/source/pregen_kendall_tau.c
+/work/atire/source/pregen_writer.c
+/work/atire/source/pregen_writer_exact_integers.c
+/work/atire/source/pregen_writer_exact_integers.c: In member function 'void ANT_pregen_writer_exact_integers::ensure_storage()':
+/work/atire/source/pregen_writer_exact_integers.c:54:76: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'struct std::pair<long long int, long long int>' with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+  memcpy(new_integers, exact_integers, sizeof(exact_integers[0]) * doc_count);
+                                                                            ^
+In file included from /usr/local/include/c++/8.3.0/utility:70,
+                 from /usr/local/include/c++/8.3.0/algorithm:60,
+                 from /work/atire/source/pregen_writer_exact_integers.c:6:
+/usr/local/include/c++/8.3.0/bits/stl_pair.h:208:12: note: 'struct std::pair<long long int, long long int>' declared here
+     struct pair
+            ^~~~
+/work/atire/source/pregen_writer_exact_strings.c
+/work/atire/source/pregen_writer_exact_strings.c: In member function 'void ANT_pregen_writer_exact_strings::ensure_storage()':
+/work/atire/source/pregen_writer_exact_strings.c:80:73: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'struct std::pair<long long int, ANT_string_pair>' with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+  memcpy(new_strings, exact_strings, sizeof(exact_strings[0]) * doc_count);
+                                                                         ^
+In file included from /usr/local/include/c++/8.3.0/utility:70,
+                 from /usr/local/include/c++/8.3.0/algorithm:60,
+                 from /work/atire/source/pregen_writer_exact_strings.c:6:
+/usr/local/include/c++/8.3.0/bits/stl_pair.h:208:12: note: 'struct std::pair<long long int, ANT_string_pair>' declared here
+     struct pair
+            ^~~~
+/work/atire/source/pregen_writer_normal.c
+/work/atire/source/pregens_writer.c
+/work/atire/source/query.c
+/work/atire/source/query_boolean.c
+/work/atire/source/query_parse_tree.c
+/work/atire/source/query_parse_tree.c: In member function 'void ANT_query_parse_tree::internal_text_render()':
+/work/atire/source/query_parse_tree.c:24:1: warning: nonnull argument 'this' compared to NULL [-Wnonnull-compare]
+ if (this == NULL)
+ ^~
+/work/atire/source/ranking_function.c
+/work/atire/source/ranking_function_bm25.c
+/work/atire/source/ranking_function_bm25adpt.c
+/work/atire/source/ranking_function_bm25l.c
+/work/atire/source/ranking_function_bm25plus.c
+/work/atire/source/ranking_function_bm25t.c
+/work/atire/source/ranking_function_bose_einstein.c
+/work/atire/source/ranking_function_dfi.c
+/work/atire/source/ranking_function_dfi_idf.c
+/work/atire/source/ranking_function_dfiw.c
+/work/atire/source/ranking_function_dfiw_idf.c
+/work/atire/source/ranking_function_dfree.c
+/work/atire/source/ranking_function_divergence.c
+/work/atire/source/ranking_function_dlh13.c
+/work/atire/source/ranking_function_docid.c
+/work/atire/source/ranking_function_dph.c
+/work/atire/source/ranking_function_factory.c
+/work/atire/source/ranking_function_impact.c
+/work/atire/source/ranking_function_inner_product.c
+/work/atire/source/ranking_function_kbtfidf.c
+/work/atire/source/ranking_function_lmd.c
+/work/atire/source/ranking_function_lmds.c
+/work/atire/source/ranking_function_lmjm.c
+/work/atire/source/ranking_function_pregen.c
+/work/atire/source/ranking_function_puurula.c
+/work/atire/source/ranking_function_puurula_idf.c
+/work/atire/source/ranking_function_readability.c
+/work/atire/source/ranking_function_term_count.c
+/work/atire/source/ranking_function_tflodop.c
+/work/atire/source/ranking_function_topsig_negative.c
+/work/atire/source/ranking_function_topsig_positive.c
+/work/atire/source/readability_dale_chall.c
+/work/atire/source/readability_factory.c
+/work/atire/source/readability_tag_weighting.c
+/work/atire/source/readability_tag_weighting.c: In member function 'virtual void ANT_readability_TAG_WEIGHTING::handle_token(ANT_parser_token*)':
+/work/atire/source/readability_tag_weighting.c:98:20: warning: unused variable 'wiki_prefix' [-Wunused-variable]
+ static const char *wiki_prefix = "wikipedia";
+                    ^~~~~~~~~~~
+/work/atire/source/readability_tag_weighting.c: At global scope:
+/work/atire/source/readability_tag_weighting.c:98:20: warning: 'wiki_prefix' defined but not used [-Wunused-variable]
+/work/atire/source/relevance_feedback.c
+/work/atire/source/relevance_feedback_blind_kl.c
+/work/atire/source/relevance_feedback_blind_kl_rm.c
+/work/atire/source/relevance_feedback_factory.c
+/work/atire/source/relevance_feedback_topsig.c
+/work/atire/source/relevant_document.c
+/work/atire/source/relevant_subtopic.c
+/work/atire/source/relevant_topic.c
+/work/atire/source/search_engine.c
+/work/atire/source/search_engine_accumulator.c
+/work/atire/source/search_engine_forum.c
+/work/atire/source/search_engine_forum_INEX.c
+/work/atire/source/search_engine_forum_INEX_bep.c
+/work/atire/source/search_engine_forum_INEX_efficiency.c
+/work/atire/source/search_engine_forum_INEX_focus.c
+/work/atire/source/search_engine_forum_TREC.c
+/work/atire/source/search_engine_memory_index.c
+/work/atire/source/search_engine_readability.c
+/work/atire/source/search_engine_result.c
+/work/atire/source/search_engine_result_id_iterator.c
+/work/atire/source/search_engine_result_iterator.c
+/work/atire/source/semaphores.c
+/work/atire/source/snippet.c
+/work/atire/source/snippet_beginning.c
+/work/atire/source/snippet_best_tag.c
+/work/atire/source/snippet_factory.c
+/work/atire/source/snippet_tag.c
+/work/atire/source/snippet_tficf.c
+/work/atire/source/snippet_word_cloud.c
+/work/atire/source/sockets.c
+/work/atire/source/stats.c
+/work/atire/source/stats_memory_index.c
+/work/atire/source/stats_search_engine.c
+/work/atire/source/stats_time.c
+/work/atire/source/stem_krovetz.c
+In function 'int ANT_stem_krovetz::kstem_stem_tobuffer(char*, char*)',
+    inlined from 'int ANT_stem_krovetz::kstem_stem_tobuffer(char*, char*)' at /work/atire/source/stem_krovetz.c:1158:5:
+/work/atire/source/stem_krovetz.c:75:66: warning: 'char* strncpy(char*, const char*, size_t)' specified bound 12 equals destination size [-Wstringop-truncation]
+ #define  stemhash(word, hval){ unsigned short int ptr[6]; strncpy((char *)ptr, word, 12); hval = ((ptr[0]<<4)^ptr[1]^ptr[2]^ptr[3]^ptr[4]^ptr[5]) % stemhtsize; }
+                                                           ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_krovetz.c:1198:1: note: in expansion of macro 'stemhash'
+ stemhash(term, hval);
+ ^~~~~~~~
+/work/atire/source/stem_otago.c
+/work/atire/source/stem_otago.c: In member function 'virtual size_t ANT_stem_otago::stem(const char*, char*)':
+/work/atire/source/stem_otago.c:106:20: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+             strncpy(buffer + length - 1, "dops", 4);
+             ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c
+/work/atire/source/stem_otago_v2.c: In member function 'virtual size_t ANT_stem_otago_v2::stem(const char*, char*)':
+/work/atire/source/stem_otago_v2.c:99:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 3, "ater", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:121:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 1, "itsk", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:169:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 2, "koto", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:189:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 4, "eris", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:195:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 2, "ller", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:294:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 2, "yaka", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:324:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 2, "koto", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:344:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 3, "ozor", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:358:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 1, "ssig", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_otago_v2.c:378:9: warning: 'char* strncpy(char*, const char*, size_t)' output truncated before terminating nul copying 4 bytes from a string of the same length [-Wstringop-truncation]
+  strncpy(buffer + length - 1, "idae", 4);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stem_porter.c
+/work/atire/source/stem_s.c
+/work/atire/source/stem_snowball.c
+/work/atire/source/stemmer.c
+/work/atire/source/stemmer_factory.c
+/work/atire/source/stemmer_term_similarity.c
+/work/atire/source/stemmer_term_similarity.c: In member function 'virtual char* ANT_stemmer_term_similarity::first(char*)':
+/work/atire/source/stemmer_term_similarity.c:199:8: warning: 'char* strncpy(char*, const char*, size_t)' specified bound 20480 equals destination size [-Wstringop-truncation]
+ strncpy(this->term, term, MAX_TERM_LENGTH);
+ ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stemmer_term_similarity.c: In member function 'double ANT_stemmer_term_similarity::term_similarity(char*, char*)':
+/work/atire/source/stemmer_term_similarity.c:177:9: warning: 'char* strncpy(char*, const char*, size_t)' specified bound 20480 equals destination size [-Wstringop-truncation]
+  strncpy(term, term1, MAX_TERM_LENGTH);
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stemmer_term_similarity_threshold.c
+/work/atire/source/stemmer_term_similarity_threshold.c: In member function 'virtual char* ANT_stemmer_term_similarity_threshold::first(char*)':
+/work/atire/source/stemmer_term_similarity_threshold.c:45:8: warning: 'char* strncpy(char*, const char*, size_t)' specified bound 20480 equals destination size [-Wstringop-truncation]
+ strncpy(this->term, term, MAX_TERM_LENGTH);
+ ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/source/stemmer_term_similarity_weighted.c
+/work/atire/source/stop_word.c
+/work/atire/source/str.c
+/work/atire/source/string_pair.c
+/work/atire/source/term_divergence_kl.c
+/work/atire/source/thesaurus.c
+/work/atire/source/thesaurus_relationship.c
+/work/atire/source/thesaurus_wordnet.c
+/work/atire/source/threads.c
+/work/atire/source/unicode.c
+/work/atire/source/unicode_tables.c
+/work/atire/source/version.c
+/work/atire/source/stem_paice_husk.c
+/work/atire/atire/atire.c
+/work/atire/atire/atire_client.c
+/work/atire/atire/atire_broker.c
+/work/atire/atire/atire_dictionary.c
+/work/atire/atire/atire_merge.c
+/work/atire/atire/atire_reorder.c
+/work/atire/atire/atire_reorder.c: In function 'int main(int, char**)':
+/work/atire/atire/atire_reorder.c:384:19: warning: unused variable 'engine' [-Wunused-variable]
+ long long offset, engine, upto = 0;
+                   ^~~~~~
+/work/atire/atire/atire_reorder.c:384:27: warning: unused variable 'upto' [-Wunused-variable]
+ long long offset, engine, upto = 0;
+                           ^~~~
+/work/atire/atire/atire_reorder.c:385:11: warning: unused variable 'global_trimpoint' [-Wunused-variable]
+ long long global_trimpoint = 0;
+           ^~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:386:11: warning: unused variable 'this_trimpoint' [-Wunused-variable]
+ long long this_trimpoint;
+           ^~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:390:7: warning: unused variable 'intersection_file_buffer' [-Wunused-variable]
+ char *intersection_file_buffer;
+       ^~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:391:7: warning: unused variable 'intersection_filename' [-Wunused-variable]
+ char *intersection_filename;
+       ^~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:392:8: warning: unused variable 'intersection_term_list' [-Wunused-variable]
+ char **intersection_term_list = NULL;
+        ^~~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:393:5: warning: unused variable 'skip_intersection' [-Wunused-variable]
+ int skip_intersection = true;
+     ^~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:394:11: warning: unused variable 'intersection_term_count' [-Wunused-variable]
+ long long intersection_term_count = 0;
+           ^~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:406:30: warning: unused variable 'maximum_terms' [-Wunused-variable]
+ long long combined_docs = 0, maximum_terms = 0;
+                              ^~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:407:11: warning: unused variable 'number_engines' [-Wunused-variable]
+ long long number_engines = argc - first_param;
+           ^~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:411:15: warning: unused variable 'longest_document' [-Wunused-variable]
+ unsigned long longest_document = 0, compress_buffer_size;
+               ^~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:411:37: warning: unused variable 'compress_buffer_size' [-Wunused-variable]
+ unsigned long longest_document = 0, compress_buffer_size;
+                                     ^~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:412:7: warning: unused variable 'document_compress_buffer' [-Wunused-variable]
+ char *document_compress_buffer;
+       ^~~~~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:442:11: warning: unused variable 'found' [-Wunused-variable]
+ long long found = 0;
+           ^~~~~
+/work/atire/atire/atire_reorder.c:527:27: warning: unused variable 'current_impact_header' [-Wunused-variable]
+ ANT_compressable_integer *current_impact_header;
+                           ^~~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:528:26: warning: unused variable 'quantum' [-Wunused-variable]
+ ANT_compressable_integer quantum, number_quantums_used, postings_offset;
+                          ^~~~~~~
+/work/atire/atire/atire_reorder.c:528:35: warning: unused variable 'number_quantums_used' [-Wunused-variable]
+ ANT_compressable_integer quantum, number_quantums_used, postings_offset;
+                                   ^~~~~~~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:528:57: warning: unused variable 'postings_offset' [-Wunused-variable]
+ ANT_compressable_integer quantum, number_quantums_used, postings_offset;
+                                                         ^~~~~~~~~~~~~~~
+/work/atire/atire/atire_reorder.c:533:26: warning: unused variable 'done' [-Wunused-variable]
+ ANT_compressable_integer done = 0;
+                          ^~~~
+/work/atire/atire/atire_doclist.c
+/work/atire/atire/atire_tar.c
+cd evaluation
+make
+g++ -g -x c++ -c between.c
+g++   between.o   -o between
+g++ -g -x c++ -c mkqrel.c
+g++   mkqrel.o   -o mkqrel
+g++ -g -x c++ -c trec2query.c
+g++ trec2query.o ../obj/critical_section.o ../obj/str.o ../obj/stop_word.o ../obj/channel_file.o ../obj/channel_trec.o ../obj/ctypes.o ../obj/memory.o ../obj/file.o ../obj/file_internals.o ../obj/instream_deflate.o ../obj/instream_file.o ../obj/instream_file_star.o ../obj/instream_pkzip.o ../obj/directory_iterator.o ../obj/directory_iterator_pkzip.o ../obj/directory_iterator_internals.o ../obj/disk.o ../external/unencumbered/zlib/libz.a ../external/unencumbered/bzip/libbz2.a -o trec2query
+g++ -g -x c++ -c INEXtopics_to_ANTquery.c
+g++ INEXtopics_to_ANTquery.o ../obj/ctypes.o -o INEXtopics_to_ANTquery
+g++ -g -x c++ -c INEXieee_assessments_to_ANT.c
+g++ INEXieee_assessments_to_ANT.o ../obj/critical_section.o ../obj/disk.o ../obj/file_internals.o -o INEXieee_assessments_to_ANT
+g++ -g -x c++ -c INEXassessments_get_best.c
+g++ INEXassessments_get_best.o ../obj/critical_section.o ../obj/disk.o ../obj/file_internals.o -o INEXassessments_get_best
+g++ -g -x c++ -c qrel_orig_alt_compare.c
+g++ qrel_orig_alt_compare.o ../obj/critical_section.o ../obj/disk.o ../obj/file_internals.o -o qrel_orig_alt_compare
+g++ -g -x c++ -c MAP_fake.c
+g++ MAP_fake.o -o MAP_fake
+cd ..
+cd ..
+ATIRE Version 0.5 alpha (64-bit)
+Written (w) 2008-2014 Andrew Trotman, University of Otago
+10000 Documents (70846704 bytes) in 32727396 bytes of memory in 04.830 seconds
+20000 Documents (142105568 bytes) in 52661306 bytes of memory in 06.145 seconds
+30000 Documents (211285241 bytes) in 70101561 bytes of memory in 07.609 seconds
+40000 Documents (281038153 bytes) in 86637091 bytes of memory in 08.519 seconds
+50000 Documents (349601108 bytes) in 102614272 bytes of memory in 09.110 seconds
+60000 Documents (415815735 bytes) in 116938821 bytes of memory in 10.309 seconds
+70000 Documents (484674808 bytes) in 132161555 bytes of memory in 11.840 seconds
+80000 Documents (554178626 bytes) in 147181631 bytes of memory in 13.256 seconds
+90000 Documents (624730780 bytes) in 161713970 bytes of memory in 14.179 seconds
+100000 Documents (693655032 bytes) in 177243686 bytes of memory in 14.888 seconds
+110000 Documents (763854313 bytes) in 191313589 bytes of memory in 16.115 seconds
+120000 Documents (832146179 bytes) in 205254400 bytes of memory in 17.189 seconds
+130000 Documents (900417870 bytes) in 218561414 bytes of memory in 18.272 seconds
+140000 Documents (969570267 bytes) in 231796662 bytes of memory in 19.132 seconds
+150000 Documents (1039927869 bytes) in 249188322 bytes of memory in 19.798 seconds
+160000 Documents (1110846658 bytes) in 262778256 bytes of memory in 20.499 seconds
+170000 Documents (1176634031 bytes) in 275276594 bytes of memory in 21.202 seconds
+180000 Documents (1245096849 bytes) in 289272227 bytes of memory in 21.938 seconds
+190000 Documents (1316201824 bytes) in 303025906 bytes of memory in 22.729 seconds
+200000 Documents (1388105991 bytes) in 316928036 bytes of memory in 23.389 seconds
+210000 Documents (1458473557 bytes) in 329699306 bytes of memory in 24.106 seconds
+220000 Documents (1526889845 bytes) in 346455683 bytes of memory in 24.816 seconds
+230000 Documents (1597156637 bytes) in 360519697 bytes of memory in 25.512 seconds
+240000 Documents (1668023413 bytes) in 373001270 bytes of memory in 26.200 seconds
+250000 Documents (1737683123 bytes) in 386265623 bytes of memory in 26.837 seconds
+260000 Documents (1806522304 bytes) in 398298087 bytes of memory in 27.525 seconds
+270000 Documents (1874615980 bytes) in 413198372 bytes of memory in 28.226 seconds
+280000 Documents (1945510271 bytes) in 426281966 bytes of memory in 28.890 seconds
+290000 Documents (2017298560 bytes) in 440972067 bytes of memory in 29.549 seconds
+300000 Documents (2088950666 bytes) in 454638044 bytes of memory in 30.350 seconds
+310000 Documents (2159324545 bytes) in 466960528 bytes of memory in 31.478 seconds
+320000 Documents (2230888594 bytes) in 479469663 bytes of memory in 32.188 seconds
+330000 Documents (2299433548 bytes) in 498107947 bytes of memory in 32.987 seconds
+340000 Documents (2370059868 bytes) in 511122666 bytes of memory in 33.661 seconds
+350000 Documents (2439539598 bytes) in 523735372 bytes of memory in 34.295 seconds
+360000 Documents (2510557941 bytes) in 536791182 bytes of memory in 35.142 seconds
+370000 Documents (2581685002 bytes) in 550607280 bytes of memory in 35.903 seconds
+380000 Documents (2654090793 bytes) in 563851301 bytes of memory in 36.597 seconds
+390000 Documents (2725057388 bytes) in 575088021 bytes of memory in 37.277 seconds
+400000 Documents (2794901095 bytes) in 590696353 bytes of memory in 38.057 seconds
+410000 Documents (2862401569 bytes) in 603448083 bytes of memory in 38.794 seconds
+420000 Documents (2932655317 bytes) in 616026449 bytes of memory in 39.599 seconds
+430000 Documents (3004695779 bytes) in 630001591 bytes of memory in 40.286 seconds
+440000 Documents (3077801709 bytes) in 643311598 bytes of memory in 40.981 seconds
+450000 Documents (3149970571 bytes) in 657196303 bytes of memory in 41.669 seconds
+460000 Documents (3222192066 bytes) in 671302556 bytes of memory in 42.340 seconds
+470000 Documents (3292322200 bytes) in 682756865 bytes of memory in 43.143 seconds
+480000 Documents (3361230519 bytes) in 693728776 bytes of memory in 43.845 seconds
+490000 Documents (3430126877 bytes) in 715495362 bytes of memory in 44.521 seconds
+500000 Documents (3499389450 bytes) in 728575628 bytes of memory in 45.181 seconds
+510000 Documents (3567989603 bytes) in 741143317 bytes of memory in 45.845 seconds
+520000 Documents (3638306663 bytes) in 753849724 bytes of memory in 46.560 seconds
+530000 Documents (3708013745 bytes) in 765719234 bytes of memory in 47.284 seconds
+540000 Documents (3779191997 bytes) in 778463653 bytes of memory in 48.144 seconds
+550000 Documents (3846144720 bytes) in 791100066 bytes of memory in 49.078 seconds
+560000 Documents (3913890627 bytes) in 803063677 bytes of memory in 49.776 seconds
+570000 Documents (3985866397 bytes) in 817021694 bytes of memory in 50.520 seconds
+580000 Documents (4054359819 bytes) in 827695150 bytes of memory in 51.184 seconds
+590000 Documents (4122066517 bytes) in 838568569 bytes of memory in 51.812 seconds
+600000 Documents (4192541758 bytes) in 855830784 bytes of memory in 52.571 seconds
+610000 Documents (4264540175 bytes) in 870045944 bytes of memory in 53.352 seconds
+620000 Documents (4334595727 bytes) in 883052968 bytes of memory in 54.055 seconds
+630000 Documents (4407345000 bytes) in 895696516 bytes of memory in 54.791 seconds
+640000 Documents (4476178625 bytes) in 909350628 bytes of memory in 55.428 seconds
+650000 Documents (4543328251 bytes) in 918927111 bytes of memory in 56.036 seconds
+660000 Documents (4610569125 bytes) in 931915348 bytes of memory in 56.694 seconds
+670000 Documents (4679871939 bytes) in 943271536 bytes of memory in 57.433 seconds
+680000 Documents (4749953314 bytes) in 957320888 bytes of memory in 58.221 seconds
+690000 Documents (4820878463 bytes) in 970049109 bytes of memory in 58.992 seconds
+700000 Documents (4891001479 bytes) in 981697744 bytes of memory in 59.639 seconds
+710000 Documents (4961090023 bytes) in 993419973 bytes of memory in 01:00.298 minutes
+720000 Documents (5031940413 bytes) in 1006236378 bytes of memory in 01:00.935 minutes
+730000 Documents (5100080167 bytes) in 1030957267 bytes of memory in 01:01.624 minutes
+740000 Documents (5170231015 bytes) in 1044637300 bytes of memory in 01:02.355 minutes
+750000 Documents (5239695385 bytes) in 1057226216 bytes of memory in 01:03.104 minutes
+760000 Documents (5308293209 bytes) in 1069030280 bytes of memory in 01:03.751 minutes
+770000 Documents (5377258486 bytes) in 1081336800 bytes of memory in 01:04.403 minutes
+780000 Documents (5445349590 bytes) in 1093517472 bytes of memory in 01:05.021 minutes
+790000 Documents (5516449308 bytes) in 1105132537 bytes of memory in 01:05.732 minutes
+800000 Documents (5585661133 bytes) in 1117055349 bytes of memory in 01:06.509 minutes
+810000 Documents (5654688107 bytes) in 1128765489 bytes of memory in 01:07.218 minutes
+820000 Documents (5723082854 bytes) in 1142169848 bytes of memory in 01:07.856 minutes
+830000 Documents (5792834656 bytes) in 1154604984 bytes of memory in 01:08.523 minutes
+840000 Documents (5864461233 bytes) in 1167333225 bytes of memory in 01:09.241 minutes
+850000 Documents (5932790754 bytes) in 1179662144 bytes of memory in 01:10.009 minutes
+860000 Documents (6000653169 bytes) in 1192932313 bytes of memory in 01:10.812 minutes
+870000 Documents (6069542942 bytes) in 1204058317 bytes of memory in 01:11.454 minutes
+880000 Documents (6137353722 bytes) in 1213831537 bytes of memory in 01:12.094 minutes
+890000 Documents (6206823670 bytes) in 1225321236 bytes of memory in 01:12.741 minutes
+900000 Documents (6275784866 bytes) in 1244925994 bytes of memory in 01:13.483 minutes
+910000 Documents (6344399191 bytes) in 1258401773 bytes of memory in 01:14.199 minutes
+920000 Documents (6414362583 bytes) in 1271311180 bytes of memory in 01:14.887 minutes
+930000 Documents (6484466363 bytes) in 1283021977 bytes of memory in 01:15.552 minutes
+940000 Documents (6552535102 bytes) in 1295543662 bytes of memory in 01:16.191 minutes
+950000 Documents (6620913278 bytes) in 1307930879 bytes of memory in 01:17.032 minutes
+960000 Documents (6689138960 bytes) in 1320395348 bytes of memory in 01:18.028 minutes
+970000 Documents (6756280394 bytes) in 1331145794 bytes of memory in 01:18.740 minutes
+980000 Documents (6825431763 bytes) in 1341171166 bytes of memory in 01:19.438 minutes
+990000 Documents (6894609608 bytes) in 1355102259 bytes of memory in 01:20.098 minutes
+1000000 Documents (6965088710 bytes) in 1369687985 bytes of memory in 01:20.940 minutes
+1010000 Documents (7033881557 bytes) in 1381384767 bytes of memory in 01:21.621 minutes
+1020000 Documents (7104769215 bytes) in 1395423720 bytes of memory in 01:22.375 minutes
+1030000 Documents (7174163794 bytes) in 1407084292 bytes of memory in 01:23.152 minutes
+1040000 Documents (7241778742 bytes) in 1417856119 bytes of memory in 01:23.904 minutes
+1050000 Documents (7311478222 bytes) in 1428994981 bytes of memory in 01:24.679 minutes
+1060000 Documents (7383991635 bytes) in 1443409132 bytes of memory in 01:25.429 minutes
+1070000 Documents (7456317882 bytes) in 1454874100 bytes of memory in 01:26.137 minutes
+1080000 Documents (7525933467 bytes) in 1466320381 bytes of memory in 01:26.949 minutes
+1090000 Documents (7592232077 bytes) in 1495626853 bytes of memory in 01:27.644 minutes
+1100000 Documents (7660467085 bytes) in 1510351232 bytes of memory in 01:28.342 minutes
+1110000 Documents (7732820012 bytes) in 1523754505 bytes of memory in 01:29.118 minutes
+1120000 Documents (7801741533 bytes) in 1535815362 bytes of memory in 01:29.836 minutes
+1130000 Documents (7872888858 bytes) in 1548335032 bytes of memory in 01:30.532 minutes
+1140000 Documents (7940514802 bytes) in 1560952594 bytes of memory in 01:31.289 minutes
+1150000 Documents (8011824261 bytes) in 1573579835 bytes of memory in 01:32.008 minutes
+1160000 Documents (8080012556 bytes) in 1586280380 bytes of memory in 01:32.692 minutes
+1170000 Documents (8149711616 bytes) in 1598757990 bytes of memory in 01:33.453 minutes
+1180000 Documents (8219895706 bytes) in 1609413420 bytes of memory in 01:34.229 minutes
+1190000 Documents (8290150718 bytes) in 1620938740 bytes of memory in 01:35.017 minutes
+1200000 Documents (8359968168 bytes) in 1632536535 bytes of memory in 01:35.752 minutes
+1210000 Documents (8430077985 bytes) in 1644768581 bytes of memory in 01:36.562 minutes
+1220000 Documents (8498220511 bytes) in 1657595413 bytes of memory in 01:37.370 minutes
+1230000 Documents (8567725622 bytes) in 1671015791 bytes of memory in 01:38.164 minutes
+1240000 Documents (8637622752 bytes) in 1683195097 bytes of memory in 01:39.038 minutes
+1250000 Documents (8707835417 bytes) in 1695467988 bytes of memory in 01:39.841 minutes
+1260000 Documents (8778237427 bytes) in 1707586720 bytes of memory in 01:40.621 minutes
+1270000 Documents (8847726823 bytes) in 1718632646 bytes of memory in 01:41.433 minutes
+1280000 Documents (8916768131 bytes) in 1732265241 bytes of memory in 01:42.129 minutes
+1290000 Documents (8986827451 bytes) in 1745424235 bytes of memory in 01:42.870 minutes
+1300000 Documents (9055192338 bytes) in 1757143356 bytes of memory in 01:43.634 minutes
+1310000 Documents (9124660461 bytes) in 1766887928 bytes of memory in 01:44.481 minutes
+1320000 Documents (9194722701 bytes) in 1777293377 bytes of memory in 01:45.349 minutes
+1330000 Documents (9268176057 bytes) in 1788957515 bytes of memory in 01:46.153 minutes
+1340000 Documents (9341719673 bytes) in 1802423610 bytes of memory in 01:46.894 minutes
+1350000 Documents (9412728997 bytes) in 1825150495 bytes of memory in 01:47.729 minutes
+1360000 Documents (9481712846 bytes) in 1839821988 bytes of memory in 01:48.507 minutes
+1370000 Documents (9553004178 bytes) in 1853825301 bytes of memory in 01:49.231 minutes
+1380000 Documents (9625502342 bytes) in 1865779869 bytes of memory in 01:49.985 minutes
+1390000 Documents (9695421428 bytes) in 1877219857 bytes of memory in 01:50.686 minutes
+1400000 Documents (9764549524 bytes) in 1889450815 bytes of memory in 01:51.375 minutes
+1410000 Documents (9834099653 bytes) in 1901111716 bytes of memory in 01:52.224 minutes
+1420000 Documents (9903825830 bytes) in 1914889485 bytes of memory in 01:53.166 minutes
+1430000 Documents (9975275809 bytes) in 1926335367 bytes of memory in 01:53.956 minutes
+1440000 Documents (10044831730 bytes) in 1939366744 bytes of memory in 01:54.682 minutes
+1450000 Documents (10116254489 bytes) in 1952084311 bytes of memory in 01:55.360 minutes
+1460000 Documents (10188836505 bytes) in 1962899874 bytes of memory in 01:56.114 minutes
+1470000 Documents (10259002519 bytes) in 1974008325 bytes of memory in 01:57.020 minutes
+1480000 Documents (10330456301 bytes) in 1987820444 bytes of memory in 01:57.910 minutes
+1490000 Documents (10402758787 bytes) in 2001505206 bytes of memory in 01:58.770 minutes
+1500000 Documents (10474664394 bytes) in 2013297676 bytes of memory in 01:59.423 minutes
+1510000 Documents (10546871201 bytes) in 2027075572 bytes of memory in 02:00.094 minutes
+1520000 Documents (10619513561 bytes) in 2041421828 bytes of memory in 02:00.882 minutes
+1530000 Documents (10690451411 bytes) in 2052981284 bytes of memory in 02:01.763 minutes
+1540000 Documents (10761884548 bytes) in 2065090096 bytes of memory in 02:02.439 minutes
+1550000 Documents (10833844721 bytes) in 2076635338 bytes of memory in 02:03.175 minutes
+1560000 Documents (10904576022 bytes) in 2088929983 bytes of memory in 02:03.909 minutes
+1570000 Documents (10977498484 bytes) in 2102516785 bytes of memory in 02:04.800 minutes
+1580000 Documents (11048085793 bytes) in 2115016672 bytes of memory in 02:05.622 minutes
+1590000 Documents (11118792587 bytes) in 2127448618 bytes of memory in 02:06.384 minutes
+1600000 Documents (11193533807 bytes) in 2139459271 bytes of memory in 02:07.223 minutes
+1610000 Documents (11264153081 bytes) in 2149872725 bytes of memory in 02:08.091 minutes
+1620000 Documents (11336815491 bytes) in 2161542897 bytes of memory in 02:08.915 minutes
+1630000 Documents (11408718745 bytes) in 2200222676 bytes of memory in 02:09.833 minutes
+1640000 Documents (11480062198 bytes) in 2217415604 bytes of memory in 02:10.581 minutes
+1650000 Documents (11552820651 bytes) in 2230697049 bytes of memory in 02:11.246 minutes
+1660000 Documents (11625587899 bytes) in 2245162454 bytes of memory in 02:11.885 minutes
+1670000 Documents (11692839545 bytes) in 2259199442 bytes of memory in 02:12.645 minutes
+1680000 Documents (11769940909 bytes) in 2271984639 bytes of memory in 02:13.579 minutes
+1690000 Documents (11841243697 bytes) in 2283377346 bytes of memory in 02:14.209 minutes
+1700000 Documents (11910725621 bytes) in 2294560362 bytes of memory in 02:14.971 minutes
+1710000 Documents (11980872605 bytes) in 2306749355 bytes of memory in 02:16.020 minutes
+1720000 Documents (12056035358 bytes) in 2321478148 bytes of memory in 02:17.140 minutes
+1730000 Documents (12128518661 bytes) in 2333499717 bytes of memory in 02:18.232 minutes
+1740000 Documents (12199754445 bytes) in 2349856393 bytes of memory in 02:19.367 minutes
+1750000 Documents (12271145230 bytes) in 2361186320 bytes of memory in 02:20.273 minutes
+1760000 Documents (12345078858 bytes) in 2370828602 bytes of memory in 02:21.119 minutes
+1770000 Documents (12417192473 bytes) in 2381671342 bytes of memory in 02:22.037 minutes
+1780000 Documents (12489783087 bytes) in 2394857672 bytes of memory in 02:22.923 minutes
+1790000 Documents (12556555092 bytes) in 2405221069 bytes of memory in 02:23.940 minutes
+1800000 Documents (12628544493 bytes) in 2418297042 bytes of memory in 02:24.796 minutes
+1810000 Documents (12700353982 bytes) in 2430088534 bytes of memory in 02:25.897 minutes
+1820000 Documents (12770337264 bytes) in 2440936150 bytes of memory in 02:27.085 minutes
+1830000 Documents (12841125622 bytes) in 2455893957 bytes of memory in 02:28.347 minutes
+1840000 Documents (12911753659 bytes) in 2469274157 bytes of memory in 02:29.815 minutes
+1850000 Documents (12976905194 bytes) in 2480985280 bytes of memory in 02:32.270 minutes
+1855657 Documents (13015319147 bytes) in 2487396763 bytes of memory in 02:34.063 minutes
+Indexing...
+Committing image...
