@@ -1,0 +1,4 @@
+num_q                 	all	50
+map                   	all	0.2381
+P_30                  	all	0.3313
+ndcg_cut_20           	all	0.3706
